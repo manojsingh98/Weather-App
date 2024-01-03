@@ -26,6 +26,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: relative;
 
 }
 
@@ -57,7 +58,8 @@ body {
     cursor: pointer;
     transition: .5s;
 }
-.search button:hover{
+
+.search button:hover {
     background-color: #b3eee2;
     transition: .5s;
 }
@@ -68,6 +70,10 @@ body {
     left: -2px;
     top: 2px;
 
+}
+
+.weather {
+    opacity: 0;
 }
 
 .weather-icon {
@@ -115,4 +121,50 @@ body {
 .sub-text {
     font-size: 18px;
     font-weight: 500;
+}
+
+.error-msg {
+    text-align: left;
+    margin-left: 1rem;
+    font-size: 16px;
+    margin-top: 1rem;
+    display: none;
+}
+.show-city{
+    z-index: 9;
+    height: 300px;
+    width: 300px;
+    padding: 10px;
+    position: absolute;
+    top: 51px;
+    background-color: white;
+    left: 12px;
+    border-radius: 10px;
+    visibility: hidden;
+    overflow-y: scroll;
+}
+.show-city::-webkit-scrollbar {
+    width: 5px;
+  }
+  .show-city::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 5px;
+    
+  }
+  .show-city::-webkit-scrollbar-thumb {
+    background: #cad5dd;
+    border-radius: 5px;
+    height: 30px;
+  }
+.show-city p{
+    color: #222;
+    text-align: left;
+    padding: 5px;
+    border-bottom: 1px solid #80808066;
+    font-size: 16px;
+    cursor: pointer;
+
+}
+.show-city p:hover{
+    background-color: #ebfffc;
 }

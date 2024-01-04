@@ -38,7 +38,6 @@ async function checkWeather(city) {
   weatherBox.style.opacity = 1;
   document.querySelector(".error-msg").style.display = "none";
 }
-// checkWeather();
 
 document.getElementById("cityVal").addEventListener("click", function () {
   const cityName = document.getElementById("cityName").value;
@@ -52,20 +51,58 @@ async function getCityList() {
   const data = await response.json();
 
   const cities = data.data;
-  const cityFun = document.getElementById("cityName");
-  cityFun.addEventListener("input", function () {
-    document.querySelector(".show-city").style.visibility = "visible";
+  const cityInput = document.getElementById("cityName");
+  const showCityDiv = document.querySelector(".show-city");
 
-    let cityList = cities.map((val) => {
-      return val.city;
-    }).map((el)=>{
-      let cityNames = document.createElement("p");
-      cityNames.innerText = el;
-      document.querySelector('.show-city').appendChild(cityNames);
-      // console.log(el);
-    })
-    // console.log(cityList);
+  cityInput.addEventListener("input", function () {
+    const inputValue = cityInput.value.toLowerCase();
+
+    // Clear previous suggestions
+    showCityDiv.innerHTML = '';
+
+    if (inputValue.trim() !== "") {
+      const matchingCities = cities.filter((city) => {
+        return city.city.toLowerCase().includes(inputValue);
+      });
+
+      matchingCities.forEach((matchedCity) => {
+        let cityNames = document.createElement("p");
+        cityNames.innerText = matchedCity.city;
+
+        // When a suggestion is clicked, fill the input with the selected city and hide suggestions
+        cityNames.addEventListener("click", function () {
+          cityInput.value = matchedCity.city;
+          showCityDiv.innerHTML = '';
+          showCityDiv.style.visibility = "hidden"
+        });
+
+        showCityDiv.appendChild(cityNames);
+      });
+
+      // Show suggestions if there are matching cities
+      showCityDiv.style.visibility = matchingCities.length > 0 ? "visible" : "hidden";
+    } else {
+      // Hide suggestions if input is empty
+      showCityDiv.style.visibility = "hidden";
+    }
+  });
+
+  // Hide suggestions when backspace key is pressed and input is empty
+  cityInput.addEventListener("keydown", function (event) {
+    if (event.key === "Backspace" && cityInput.value.trim() === "") {
+      showCityDiv.style.visibility = "hidden";
+    }
+  });
+
+  // Clear suggestions and hide when input field is empty
+  cityInput.addEventListener("blur", function () {
+    if (cityInput.value.trim() === "") {
+      showCityDiv.innerHTML = '';
+      showCityDiv.style.visibility = "hidden";
+    }
   });
 }
 
 getCityList();
+
+

@@ -12,13 +12,17 @@
       rel="stylesheet"
     />
   </head>
+
   <body>
     <div class="container">
       <div class="search">
-        <input type="text" placeholder="enter city name" spellcheck="false" id="cityName"/>
-        <div class="show-city">
-
-        </div>
+        <input
+          type="text"
+          placeholder="enter city name"
+          spellcheck="false"
+          id="cityName"
+        />
+        <div class="show-city"></div>
         <button id="cityVal"><img src="images/search.png" alt="" /></button>
       </div>
       <div class="error-msg">
@@ -26,25 +30,23 @@
       </div>
       <div class="weather">
         <img src="images/rain.png" alt="" class="weather-icon" />
-        <h1><span  class="temp">22</span> °C</h1>
+        <h1><span class="temp">22</span> °C</h1>
         <h2 class="city">Almora</h2>
         <div class="details">
-            <div class="col">
-                <img src="images/humidity.png" alt="" >
-                <div>
-                    <p><span class="humidity">50</span>%</p>
-                    <p class="sub-text">Humidity</p>
-                </div>
-
+          <div class="col">
+            <img src="images/humidity.png" alt="" />
+            <div>
+              <p><span class="humidity">50</span>%</p>
+              <p class="sub-text">Humidity</p>
             </div>
-            <div class="col">
-                <img src="images/wind.png" alt="" >
-                <div>
-                    <p><span class="wind">13</span> km/h</p>
-                    <p class="sub-text">Wind Speed</p>
-                </div>
-
+          </div>
+          <div class="col">
+            <img src="images/wind.png" alt="" />
+            <div>
+              <p><span class="wind">13</span> km/h</p>
+              <p class="sub-text">Wind Speed</p>
             </div>
+          </div>
         </div>
       </div>
     </div>

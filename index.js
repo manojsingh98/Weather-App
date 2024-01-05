@@ -72,7 +72,7 @@ async function getCityList() {
         // When a suggestion is clicked, fill the input with the selected city and hide suggestions
         cityNames.addEventListener("click", function () {
           cityInput.value = matchedCity.city;
-          showCityDiv.innerHTML = '';
+          // showCityDiv.innerHTML = '';
           showCityDiv.style.visibility = "hidden"
         });
 
